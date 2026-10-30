@@ -26,9 +26,9 @@ public class Main {
                 case 2 -> {
                     product = searchById(inventory);
                     if (product == null) {
-                        System.out.println("Product not founded");
+                        System.out.println("Product not found");
                     } else {
-                        System.out.println("Product founded!");
+                        System.out.println("Product found!");
                         System.out.printf("%d | %s | %.2f%n",
                                 product.getId(),
                                 product.getName(),
@@ -40,9 +40,9 @@ public class Main {
                     double minPrice = Console.promptForDouble("Enter your minPrice");
                     ArrayList <Product> productInRange = searchByPriceRange(maxPrice,minPrice, inventory);
                     if (productInRange.isEmpty()) {
-                        System.out.println("Product not founded");
+                        System.out.println("Product not found");
                     } else {
-                        System.out.println("Product/s founded!");
+                        System.out.println("Product/s found");
                         for(int i = 0; i < productInRange.size(); i++) {
                             product = productInRange.get(i);
                             System.out.printf("%d | %s | %.2f%n",
@@ -53,10 +53,11 @@ public class Main {
                     }
                 }
                 case 4 -> {
-                    int id = Console.promptForInt("Enter the Id:");
+                    int id = Console.promptForInt("Enter the Id: ");
                     String name = Console.promptForString("Enter name of the product: ");
                     double price = Console.promptForDouble("Enter the price of the product: ");
                     addProduct(id, name, price, inventory);
+                    inventory.sort(Comparator.comparing(Product::getName));
                 }
 
             }
@@ -126,10 +127,9 @@ public class Main {
 
     }//end of search by price range
 
-    public static Product addProduct(int id, String name, double price, ArrayList <Product> inventory){
-
-
-
+    public static void addProduct(int id, String name, double price, ArrayList <Product> inventory){
+        Product productToAdd = new Product(id, name, price);
+        inventory.add(productToAdd);
     }
 
 

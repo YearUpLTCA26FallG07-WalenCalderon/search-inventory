@@ -13,7 +13,7 @@ public class Console {
 5- Quit the application
 Enter command:*/
 
-            System.out.println("\nWhat do you want to do?What do you want to do?");
+            System.out.println("\nWhat do you want to do?");
             System.out.println("1- List all products");
             System.out.println("2- Lookup a product by its id");
             System.out.println("3- Find all products within a price range");
